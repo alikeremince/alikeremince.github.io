@@ -15,11 +15,6 @@
             box-shadow: 0 6px 12px 0 rgb(6 43 86 / 4%);
         }
 
-        .menu-logo {
-            width: 50px; /* Set the width of the logo as needed */
-            height: auto;
-        }
-
         .menu-items {
             display: flex;
             align-items: center; /* Vertically align menu items */
@@ -68,7 +63,7 @@
         a {
             text-decoration: none;
             font-size: 22px;
-			transition: all .3s ease;
+	    transition: all .3s ease;
             color: #0f437f;
         }
 
@@ -77,12 +72,12 @@
         }
 
         ul {
-            font-size: 22px;
+            font-size: 18px;
         }
 
         li {
-            font-size: 22px;
-            padding: 10px;
+            font-size: 18px;
+            padding: 5px;
         }
 
         footer {
