@@ -27,6 +27,10 @@
             border: 1px solid #000;
             border-radius: 50%;
         }
+				/* Define the custom font for the "Points" button */
+		.custom-label {
+			font-family: 'Lucida Handwriting', cursive;
+		}
     </style>
     <title></title>
 </head>
@@ -205,6 +209,9 @@
         {'Points': layer_Points},
         {collapsed: false}
     ).addTo(map);
+
+	// Add a custom CSS class to the "Points" label
+	document.querySelector('.leaflet-control-layers-overlays label').classList.add('custom-label');
 
     resetLabels([layer_Points]);
 
