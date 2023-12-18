@@ -34,9 +34,6 @@
 <div id="map"></div>
 <script src="js/qgis2web_expressions.js"></script>
 <script src="js/leaflet.js"></script>
-<script src="js/L.Control.Locate.min.js"></script>
-<script src="js/multi-style-layer.js"></script>
-<script src="js/leaflet-svg-shape-markers.min.js"></script>
 <script src="js/leaflet.rotatedMarker.js"></script>
 <script src="js/leaflet.pattern.js"></script>
 <script src="js/leaflet-hash.js"></script>
@@ -44,14 +41,12 @@
 <script src="js/rbush.min.js"></script>
 <script src="js/labelgun.min.js"></script>
 <script src="js/labels.js"></script>
-
-<script src="data/Points.js"></script>
-<script src="data/Route.js"></script>
+<script src="js/multi-style-layer.js"></script>
+<script src="Data/Slocum.js"></script>
 
 <script>
 
     var highlightLayer;
-
     function highlightFeature(e) {
         highlightLayer = e.target;
 
@@ -80,29 +75,20 @@
 
     var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
 	
-    <!-- map.createPane('pane_OSM'); -->
-    <!-- map.getPane('pane_OSM').style.zIndex = 400; -->
+    map.createPane('pane_OSM');
+    map.getPane('pane_OSM').style.zIndex = 400;
 
-    <!-- var layer_OSM = L.tileLayer('http://tile.openstreetmap.org/{z}/{x}/{y}.png', { -->
-        <!-- pane: 'pane_OSM', -->
-        <!-- opacity: 1.0, -->
-        <!-- attribution: '<a href="https://www.openstreetmap.org/copyright">© OpenStreetMap contributors, CC-BY-SA</a>', -->
-        <!-- minZoom: 1, -->
-        <!-- maxZoom: 10, -->
-        <!-- minNativeZoom: 0, -->
-        <!-- maxNativeZoom: 19 -->
-    <!-- }); -->
+    var layer_OSM = L.tileLayer('http://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        pane: 'pane_OSM',
+        opacity: 1.0,
+        attribution: '<a href="https://www.openstreetmap.org/copyright">© OpenStreetMap contributors, CC-BY-SA</a>',
+        minZoom: 1,
+        maxZoom: 10,
+        minNativeZoom: 0,
+        maxNativeZoom: 19
+    });
 
-    <!-- map.addLayer(layer_OSM); -->
-	
-	var layer_StamenToner = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}.{ext}', {
-    attribution: '<a href="http://maps.stamen.com/toner" target="_blank">Stamen Toner</a>',
-    subdomains: 'abcd',
-    minZoom: 0,
-    maxZoom: 20,
-    ext: 'png'
-}).addTo(map);
-
+    map.addLayer(layer_OSM);
 
     function pop_Points(feature, layer) {
         layer.on({
