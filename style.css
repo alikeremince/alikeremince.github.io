@@ -122,8 +122,10 @@
         }
 
 		table {
-			width: 100%; /* Full width */
+			width: fit-content; /* Content width */
 			border-collapse: collapse; /* Makes borders look cleaner */
+			margin-left: auto;
+			margin-right: auto;
 		}
 
 		th, td {
