@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kerem's</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="menu-bar">
+        <div class="title-container">
+			<title1>Kerem's</title1>
+        </div>
+        <div class="menu-container">
+            <div class="menu-items">
+                <a href="index.html" class="menuitem">Home</a>
+                <!-- Additional menu items can be added here -->
+            </div>
+        </div>
+    </header>
+	
+    <div class="context-container">
+		<h1>Master's Thesis Timeplan</h1>
+		<h2>24 Weeks in Total</h2>
+	
+        <table id="projectTable">
+            <thead>
+                <tr>
+                    <th>End of Week</th>
+                    <th>Task Description</th>
+                    <th>End Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Table rows will be inserted here by JavaScript -->
+            </tbody>
+        </table>
+    </div>
+
+    <footer>
+        Kerem's Online Storage
+    </footer>
+
+    <script>
+	
+	const taskData = [
+		{ weekNumber: 0, taskDescription: "Start" },
+		{ weekNumber: 2, taskDescription: "Data Preperation & Fill-Sinks Development" },
+		{ weekNumber: 4, taskDescription: "Water Balance Equation Development" },
+		{ weekNumber: 7, taskDescription: "Model Development" },
+		{ weekNumber: 9, taskDescription: "Initial Results & Checks" },
+		{ weekNumber: 12, taskDescription: "First Draft of Report" },
+		{ weekNumber: 14, taskDescription: "Validation with Measured Data" },
+		{ weekNumber: 16, taskDescription: "Model Imporivements and Checks" },
+		{ weekNumber: 18, taskDescription: "Reporting" },
+		{ weekNumber: 20, taskDescription: "Checks and Improvements" },
+		{ weekNumber: 22, taskDescription: "Final Report Submission" },
+		{ weekNumber: 24, taskDescription: "Buffer Time" },
+		// Add more tasks as needed
+	];
+
+	const startdate = "01.02.2024";
+
+	function convertToDateObject(dateStr) {
+		const parts = dateStr.split(".");
+		return new Date(parts[2], parts[1] - 1, parts[0]); // Month is 0-indexed in JavaScript
+	}
+
+	function formatDateForDisplay(dateObj) {
+		const day = String(dateObj.getDate()).padStart(2, '0');
+		const month = String(dateObj.getMonth() + 1).padStart(2, '0'); // Month is 0-indexed in JavaScript
+		const year = dateObj.getFullYear();
+		return `${day}.${month}.${year}`;
+	}
+
+	function generateTableRows(taskData, startDate) {
+		const startDateObj = convertToDateObject(startDate);
+		const tableBody = document.querySelector("#projectTable tbody");
+		tableBody.innerHTML = ''; // Clear existing table rows
+
+		taskData.forEach(task => {
+			const submissionDate = new Date(startDateObj);
+			submissionDate.setDate(submissionDate.getDate() + task.weekNumber * 7);
+
+			const row = `<tr>
+							<td>${task.weekNumber}</td>
+							<td>${task.taskDescription}</td>
+							<td>${formatDateForDisplay(submissionDate)}</td>
+						 </tr>`;
+			tableBody.innerHTML += row;
+		});
+	}
+
+	generateTableRows(taskData, startdate);
+
+		
+    </script>
+</body>
+</html>
