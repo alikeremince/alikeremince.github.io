@@ -186,18 +186,11 @@
             },
         });
         map.addLayer(layer_Stempelstellen);
-
-
-		function getCollectedCount() {
-			return layer_Stempelstellen.getLayers().reduce(function (count, layer) {
-				return count + (layer.feature.properties.Collected === 'Yes' ? 1 : 0);
-			}, 0);
-		}
-
-		var collectedCount = getCollectedCount();
 		
 		var Image_Free = "data:image/png;base64,/9j/4AAQSkZJRgABAQEAkACQAAD/4QAiRXhpZgAATU0AKgAAAAgAAQESAAMAAAABAAEAAAAAAAD/2wBDAAIBAQIBAQICAgICAgICAwUDAwMDAwYEBAMFBwYHBwcGBwcICQsJCAgKCAcHCg0KCgsMDAwMBwkODw0MDgsMDAz/2wBDAQICAgMDAwYDAwYMCAcIDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAz/wAARCAASABIDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD78+IXxH+MH/BS/wDa8+I3wv8Ahf8AEXUvgt8Hvgndx6J4t8W6JbRXHiLxTrckQmfT7F5Q0dpDbRshlmKs5d1UKQS0fL/Hv4T/AB0/4I9fDyb4zeE/jd8RPj18MPB7rd+O/BHxBmhvtQbSiwFxfabqCIjxzW6nzTDICjor/MCqo6/Cn48eHf8Agj/+3R8bfCfxnnbwf8Mfjz4uk+IXgjx3dozaI19cQxpf6VeXAG21mR4lkiMuEdGYblIQPb/4KVf8FKPh/wDtX/s+eI/2e/2efEWj/Gj4vfGfTpPDNlZeF7kahY+HrO5Hl3Wp6jdx5ht4IIXdgHbfI5RQpUuyAH6BeDPFem/EPwdpPiDSbz7TpeuWcOoWcwbAlhlQSIw+qsD+NFc/8BvgvYfA74G+C/BVvJJc2/g/QrHRI5STmVba3SEN+ITNFAHReMPBWjfELQLrSdf0nTNc0q6TE1lqFqlzbyjkfNG4Kn8RXO/Bf4E+B/ghoEkHgvwb4V8IQ3DbpY9E0m309ZT1ywiRQefWiigDtqKKKAP/2Q==";
 		var Image_Collected = "data:image/png;base64,/9j/4AAQSkZJRgABAQEAkACQAAD/4QAiRXhpZgAATU0AKgAAAAgAAQESAAMAAAABAAEAAAAAAAD/2wBDAAIBAQIBAQICAgICAgICAwUDAwMDAwYEBAMFBwYHBwcGBwcICQsJCAgKCAcHCg0KCgsMDAwMBwkODw0MDgsMDAz/2wBDAQICAgMDAwYDAwYMCAcIDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAz/wAARCAASABIDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD33/gpL/wUg+K/x+/as8ZfB/4P+M7z4W+A/hdOml+KPFGlRRy63rmqvEJXs7V5AVt4oEIDuPnLng4Bx4h4F/bo+P3/AATgvYfHU3xW8ZfGr4baTMsvi7wv4ymjvL1tPLATXVjd7VeOaIEuI2yjBSOcAE/bq8BS/wDBNv8Ab8+Ksnjq3uNG+HPxq8QyeMvDHi2WNm003c6ILvT7iYAiGZJFLoHwGRuD0z5L8RviLb/tjadP8GfgzNbfET4g/EWJtHgg0ZxcWmjW83yz315MuY4YYo97EuQWOMAjmvh8bjc3jm8aVKL9nddNLddT4HHY7OI5xGlSi/Z3XTS2l9T+i3wZ4r0z4geD9J17SriK40vW7OG/s5Qf9bDKgkRvxVgaKwPgR8HLH4I/A/wb4Lt5JbiDwjoVloscpbmVba3SEN+ITNFfdcx95yx7G94r8GaP8QfD8+k69pOm65pdzGfOs9QtUubeX/eRwVP4isH4L/ArwR8E9Dkt/Bng3wr4RguH/ex6LpNvYJL/ALwiRQfxoorEO3odsv3aKKKoo//Z";
+		var Image_Kerem = "data:image/png;base64,/9j/4AAQSkZJRgABAQEAkACQAAD/4QAiRXhpZgAATU0AKgAAAAgAAQESAAMAAAABAAEAAAAAAAD/2wBDAAIBAQIBAQICAgICAgICAwUDAwMDAwYEBAMFBwYHBwcGBwcICQsJCAgKCAcHCg0KCgsMDAwMBwkODw0MDgsMDAz/2wBDAQICAgMDAwYDAwYMCAcIDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAz/wAARCAASABIDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD33/gpL/wUg+K/x+/as8ZfB/4P+M7z4W+A/hdOml+KPFGlRRy63rmqvEJXs7V5AVt4oEIDuPnLng4Bx4h4F/bo+P3/AATgvYfHU3xW8ZfGr4baTMsvi7wv4ymjvL1tPLATXVjd7VeOaIEuI2yjBSOcAE/bq8BS/wDBNv8Ab8+Ksnjq3uNG+HPxq8QyeMvDHi2WNm003c6ILvT7iYAiGZJFLoHwGRuD0z5L8RviLb/tjadP8GfgzNbfET4g/EWJtHgg0ZxcWmjW83yz315MuY4YYo97EuQWOMAjmvh8bjc3jm8aVKL9nddNLddT4HHY7OI5xGlSi/Z3XTS2l9T+i3wZ4r0z4geD9J17SriK40vW7OG/s5Qf9bDKgkRvxVgaKwPgR8HLH4I/A/wb4Lt5JbiDwjoVloscpbmVba3SEN+ITNFfdcx95yx7G94r8GaP8QfD8+k69pOm65pdzGfOs9QtUubeX/eRwVP4isH4L/ArwR8E9Dkt/Bng3wr4RguH/ex6LpNvYJL/ALwiRQfxoorEO3odsv3aKKKoo//Z";
+		var Image_Marina = "data:image/png;base64,/9j/4AAQSkZJRgABAQEAkACQAAD/4QAiRXhpZgAATU0AKgAAAAgAAQESAAMAAAABAAEAAAAAAAD/2wBDAAIBAQIBAQICAgICAgICAwUDAwMDAwYEBAMFBwYHBwcGBwcICQsJCAgKCAcHCg0KCgsMDAwMBwkODw0MDgsMDAz/2wBDAQICAgMDAwYDAwYMCAcIDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAz/wAARCAASABIDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD33/gpL/wUg+K/x+/as8ZfB/4P+M7z4W+A/hdOml+KPFGlRRy63rmqvEJXs7V5AVt4oEIDuPnLng4Bx4h4F/bo+P3/AATgvYfHU3xW8ZfGr4baTMsvi7wv4ymjvL1tPLATXVjd7VeOaIEuI2yjBSOcAE/bq8BS/wDBNv8Ab8+Ksnjq3uNG+HPxq8QyeMvDHi2WNm003c6ILvT7iYAiGZJFLoHwGRuD0z5L8RviLb/tjadP8GfgzNbfET4g/EWJtHgg0ZxcWmjW83yz315MuY4YYo97EuQWOMAjmvh8bjc3jm8aVKL9nddNLddT4HHY7OI5xGlSi/Z3XTS2l9T+i3wZ4r0z4geD9J17SriK40vW7OG/s5Qf9bDKgkRvxVgaKwPgR8HLH4I/A/wb4Lt5JbiDwjoVloscpbmVba3SEN+ITNFfdcx95yx7G94r8GaP8QfD8+k69pOm65pdzGfOs9QtUubeX/eRwVP4isH4L/ArwR8E9Dkt/Bng3wr4RguH/ex6LpNvYJL/ALwiRQfxoorEO3odsv3aKKKoo//Z";
 		
 		   var abstract = new L.Control({'position':'topright'});
 			abstract.onAdd = function (map) {
@@ -212,23 +205,45 @@
 					this._div.classList.remove("abstract");
 					this._div.classList.add("abstractUncollapsed");
 					this._div.innerHTML = 
-			'<table style="width:100%">\
-			<tr>\
-			<th colspan="3";>Harzer Wandernadel Map of Kerem</th>\
-			</tr>\
-			<tr>\
-			<td style="text-align: right;"><img src=" ' + Image_Free + ' "></td>\
-			<td style="text-align: left;"> Free</td>\
-			<td style="text-align: center; border-left: 1px solid black;">' + collectedCount +'/222</td>\
-			</tr>\
-			<tr>\
-			<td style="text-align: right;"><img src=" '+ Image_Collected + ' "></td>\
-			<td style="text-align: left;"> Collected</td>\
-			<td style="text-align: center; border-left: 1px solid black;">Wanderkönig</td>\
-			</tr>\
+			'<table style="width:100%">
+			  <tr>
+			    <th colspan="4" style="text-align: center;">Harzer Wandernadel Map of Kerem</th>
+			  </tr>
+			  <tr>
+			    <td style="text-align: right;"><img src="' + Image_Kerem + '"></td>
+			    <td style="text-align: left;">Only Kerem</td>
+			    <td style="text-align: right;"><img src="' + Image_Free + '"></td>
+			    <td style="text-align: left;">Free</td>
+			  </tr>
+			  <tr>
+			    <td style="text-align: right;"><img src="' + Image_Marina + '"></td>
+			    <td style="text-align: left;">Only Marina</td>
+			    <td style="text-align: right;"><img src="' + Image_Collected + '"></td>
+			    <td style="text-align: left;">Collected</td>
+			  </tr>
+			  <tr>
+			    <th colspan="2" style="text-align: center;">Kerem</th>
+			    <th colspan="2" style="text-align: center; border-left: 1px solid black;">Marina</th>
+			  </tr>
+			  <tr>
+			    <td colspan="2" style="text-align: center;"><pre>return layer_Stempelstellen.getLayers().reduce((count, layer) => count + (layer.feature.properties.Kerem === 'Yes' ? 1 : 0), 0);</pre>/222</td>
+			    <td colspan="2" style="text-align: center; border-left: 1px solid black;"><pre>return layer_Stempelstellen.getLayers().reduce((count, layer) => count + (layer.feature.properties.Marina === 'Yes' ? 1 : 0), 0);</pre>/222</td>
+			  </tr>
+			  <tr>
+			    <td colspan="2" style="text-align: center;">Wanderkönig</td>
+			    <td colspan="2" style="text-align: center; border-left: 1px solid black;">Wanderkönigin</td>
+			  </tr>
 			</table>';
 			};
+
+
 			
+
+
+
+
+
+	       
 			abstract.addTo(map);
 		
         </script>
