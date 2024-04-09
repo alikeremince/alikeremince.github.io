@@ -136,42 +136,37 @@
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_Stempelstellen(feature) {
-            switch(String(feature.properties['Collected'])) {
-                case 'Yes':
-                    return {
-                pane: 'pane_Stempelstellen',
-                radius: 6.0,
-                opacity: 1,
-                color: 'rgba(0,0,0,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 2.0,
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(84,176,74,1.0)',
-                interactive: true,
-            }
-                    break;
-                case 'No':
-                    return {
-                pane: 'pane_Stempelstellen',
-                radius: 6.0,
-                opacity: 1,
-                color: 'rgba(0,0,0,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 2.0,
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(255,255,255,1.0)',
-                interactive: true,
-            }
-                    break;
-            }
-        }
+	function style_Stempelstellen(feature) {
+	    var keremStatus = String(feature.properties['Kerem']);
+	    var marinaStatus = String(feature.properties['Marina']);
+	    var fillColor;
+	
+	    if (String(feature.properties['Kerem']) === 'Yes' && String(feature.properties['Marina']) === 'Yes') {
+	        fillColor = 'rgba(84,176,74,1.0)'; // Green if both are 'Yes'
+	    } else if (String(feature.properties['Kerem']) === 'Yes') {
+	        fillColor = 'rgba(0,70,160,1.0)'; // Blue if only Kerem is 'Yes'
+	    } else if (String(feature.properties['Marina']) === 'Yes') {
+	        fillColor = 'rgba(100,200,255,1.0)'; // Yellow if only Marina is 'Yes'
+	    } else if {(String(feature.properties['Kerem']) === 'No' && String(feature.properties['Marina']) === 'No')
+	        fillColor = 'rgba(255,255,255,1.0)'; // White if both are 'No'
+	    }
+	
+	    return {
+	        pane: 'pane_Stempelstellen',
+	        radius: 6.0,
+	        opacity: 1,
+	        color: 'rgba(0,0,0,1.0)',
+	        dashArray: '',
+	        lineCap: 'butt',
+	        lineJoin: 'miter',
+	        weight: 2.0,
+	        fill: true,
+	        fillOpacity: 1,
+	        fillColor: fillColor,
+	        interactive: true,
+	    };
+	}
+	       
         map.createPane('pane_Stempelstellen');
         map.getPane('pane_Stempelstellen').style.zIndex = 403;
         map.getPane('pane_Stempelstellen').style['mix-blend-mode'] = 'normal';
